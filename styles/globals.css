@@ -66,8 +66,10 @@ width: 100%;
 }
 .logo{
   color: gray;
-  font-size: 18px;
-
+  transition: all ease 0.4s;
+}
+.logo:hover{
+  transform: scale(1.1);
 }
 .cart-icon{
   font-size: 25px;
@@ -98,7 +100,7 @@ width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 3em;
   margin-top: 20px;
   width: 100%;
 }
@@ -107,7 +109,9 @@ width: 100%;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
  color: #324d67;
-
+  padding: 1em;
+  border-radius: 10px;
+  width: 350px;
 }
 .product-card:hover{
   transform: scale(1.1,1.1)
@@ -117,10 +121,11 @@ width: 100%;
  background-color: #ebebeb;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
+  object-fit: contain;
 }
-
 .product-name{
   font-weight: 500;
+  text-wrap: wrap;
 }
 .product-price{
   font-weight: 800;
@@ -130,49 +135,61 @@ width: 100%;
 
 .hero-banner-container{
   padding: 100px 40px;
-  background-color: #dcdcdc;
+  background-color: #9B2135;
   border-radius: 15px;
   position: relative;
   height: 500px;
   line-height: 0.9; 
   width: 100%;
-
 }
-.hero-banner-container .beats-solo{
+.hero-banner-container .small-text{
+  color: white;
   font-size: 20px;
 }
 .hero-banner-container button{
    border-radius: 15px;
   padding: 10px 16px;
-  background-color: #f02d34;
+  background-color: #2A5C86;
   color: white;
   border: none;
-  margin-top: 40px;
+  margin-top: 30px;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
   z-index:10000 !important;
+  transition: all ease 0.4s;
+}
+.hero-banner-container button:hover{
+ background-color: #486c8a;
+ transition: all ease 0.4s;
 }
 
 .hero-banner-container h3{
+  color: white;
   font-size: 4rem;
   margin-top: 4px;
 }
 .hero-banner-container h1{
-  color: white;
+  color: #F2E320;
   font-size: 10em;
-  margin-left: -20px;
   text-transform: uppercase;
 }
 .hero-banner-image{
   position: absolute;
   top: 0%;
-  right:20%;
+  right:5%;
   width: 450px;
   height: 450px;
+  object-fit: contain;
 }
-
-
+.slide-in {
+  animation: slideIn linear;
+  animation-timeline: view(-100px -100px);
+}
+@keyframes slideIn {
+  from {transform: translateY(-100px) translateX(30px);}
+  to {transform: translateY(100px) translateX(-30px);}
+}
 .desc{
 position: absolute;
 right: 10%;
@@ -181,11 +198,11 @@ width: 300px;
 line-height: 1.3;
 display: flex;
 flex-direction: column;
- color: #324d67;
+ color: #9B2135;
 
 }
 .desc p{
-  color: #5f5f5f;
+  color: white;
   font-weight: 100;
 text-align: end;
 }
@@ -199,7 +216,7 @@ text-align: end;
 .products-heading{
   text-align: center;
   margin: 40px 0px;
- color: #324d67;
+ color: #9B2135;
 
 }
 .products-heading h2{
@@ -212,51 +229,67 @@ text-align: end;
 }
 .footer-banner-container{
   padding: 100px 40px;
-  background-color: #f02d34;
+  background-color: #9B2135;
   border-radius: 15px;
   position: relative;
   height: 400px;
   line-height: 1; 
   color: white;
   width: 100%;
-  margin-top: 120px;
+  margin-top: 12em;
 }
 .banner-desc{
   display: flex ;
   justify-content: space-between;
+  gap: 2em;
 }
 .banner-desc button{
   border-radius: 15px;
   padding: 10px 16px;
   background-color: white;
-  color: red;
+  color: #9B2135;
   border: none;
   margin-top: 40px;
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
+  transition: all ease 0.4s;
+}
+.banner-desc button:hover{
+  background: #ca7778;
+  color: white;
 }
 .banner-desc .left h3{
   font-weight: 900;
   font-size: 80px;
   margin-left: 25px;
+  z-index: 99;
+  position: relative;
 }
 .banner-desc .left p{
   margin:18px;
 }
 .footer-banner-image{
   position: absolute;
+  width: auto;
+  height: 500px;
   /* top: -35%;
   left: 8%; */
-  top: -25%;
-  left: 25%;
+  top: -20%;
+  left: 30%;
+  object-fit: contain;
+  filter: brightness(65%);
 }
 .banner-desc .right{
-  line-height: 1.4;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .banner-desc .right h3{
   font-weight: 800;
   font-size: 60px;
+  margin-bottom: 0.2em;
 }
 .banner-desc .right p{
   font-size: 18px;
@@ -264,6 +297,11 @@ text-align: end;
 .banner-desc .right .company-desc{
   font-size: 14px;
   font-weight: 300;
+}
+.shop-btn{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 .cart-wrapper{
   width: 100vw;
@@ -625,18 +663,30 @@ margin-top: 160px;
   .hero-banner-image{
     width: 77%;
     height: 62%;
-    top: -2%;
-    right: -6%;
+    top: 5%;
+    right: -2%;
+    filter: brightness(72%);
+  }
+  .hero-banner-container .small-text {
+    border-radius: 5px;
+    padding: 0.2em;
+    width: fit-content;
+  }
+  .hero-banner-container h3, h1, .small-text{
+    position: relative;
+    z-index: 99;
   }
   .footer-banner-container{
-    height: 560px;
+    height: 100%;
     margin-top: 80px;
+    padding: 4em 2em;
+    overflow: hidden;
   }
   .footer-banner-image{
-    width: 77%;
-    left: 30%;
+    width: auto;
+    left: 40%;
     top: 6%;
-    height: 56%
+    height: 56%;
   }
   .banner-desc .left h3{
     font-weight: 900;
@@ -655,9 +705,12 @@ margin-top: 160px;
   .banner-desc .right .company-desc{
     font-size: 14px;
   }
+  .banner-desc .right button{
+    display: block;
+  }
   .banner-desc{
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 2.5em;
   }
   .hero-banner-container{
     line-height: 1.3;
@@ -669,7 +722,7 @@ margin-top: 160px;
     font-size: 40px;
   }
   .hero-banner-container button{
-    margin-top: 90px;
+    margin-top: 70px;
     z-index: 10000;
   }
   .desc{

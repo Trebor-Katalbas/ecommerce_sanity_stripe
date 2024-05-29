@@ -1,13 +1,14 @@
+import Link from 'next/link';
 import React from 'react';
-import { AiFillInstagram, AiOutlineTwitter} from 'react-icons/ai';
+import { AiFillInstagram, AiFillFacebook} from 'react-icons/ai';
 
 const Footer = () => {
   return (
     <div className="footer-container">
-      <p>2024 DKD Marketing All rights reserverd</p>
+      <p>2024 DKD Marketing All rights reserved.</p>
       <p className="icons">
         <AiFillInstagram />
-        <AiOutlineTwitter />
+        <Link href="https://www.facebook.com/dkdmarketingzc"><a target="_blank"><AiFillFacebook /></a></Link>
       </p>
     </div>
   )

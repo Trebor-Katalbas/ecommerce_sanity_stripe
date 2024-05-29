@@ -37,7 +37,7 @@ const ProductDetails = ({ product, products }) => {
         <div className="product-detail-desc">
           <h1>{name}</h1>
           <div className="reviews">
-            <div>
+            {/* <div>
               <AiFillStar />
               <AiFillStar />
               <AiFillStar />
@@ -46,7 +46,7 @@ const ProductDetails = ({ product, products }) => {
             </div>
             <p>
               (20)
-            </p>
+            </p> */}
           </div>
           <h4>Details: </h4>
           <p>{details}</p>
