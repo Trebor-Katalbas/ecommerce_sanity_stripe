@@ -14,21 +14,15 @@ export default async function handler(req, res) {
 
         return {
           name: item.name,
-          images: [newImage],
-          price: item.price,
+          // images: [newImage],
+          amount: item.price * 100, // Amount in cents
           quantity: item.quantity,
+          currency: "PHP",
         };
       });
 
-      const referenceNumber = Math.floor(100000 + Math.random() * 900000);
+      const referenceNumber = Math.floor(100000 + Math.random() * 900000).toString();
 
-      const lineItems = items.map((item) => ({
-        name: item.name,
-        quantity: item.quantity,
-        currency: "PHP",
-        amount: item.price * 100, // PayMongo expects amount in cents
-      }));
-      
       // Create Checkout Session
       const checkoutSessionResponse = await axios.post(
         "https://api.paymongo.com/v1/checkout_sessions",
@@ -44,11 +38,11 @@ export default async function handler(req, res) {
                   postal_code: 'string'
                 },
                 name: 'string',
-                email: 'string@sadfsdf.nj',
+                email: 'string@example.com',
                 phone: 'string'
               },
-              description: 'asdasd',
-              line_items: lineItems,
+              description: 'DKD Food Solutions (Products)',
+              line_items: items,
               reference_number: referenceNumber,
               payment_method_types: [
                 "gcash",
@@ -58,12 +52,12 @@ export default async function handler(req, res) {
                 "brankas_bdo",
                 "brankas_landbank",
                 "brankas_metrobank",
-                "card",
                 "billease",
               ],
               send_email_receipt: true,
               show_description: true,
               show_line_items: true,
+              success_url: `${req.headers.origin}/success`,
             },
           },
         },
@@ -79,9 +73,10 @@ export default async function handler(req, res) {
 
       const paymentIntent = checkoutSessionResponse.data.data;
 
-      // Return success URL as a link
+      // Return the checkout session data
       res.status(200).json({ paymentIntent });
     } catch (err) {
+      console.error(err);
       res.status(err.response?.status || 500).json({ error: err.message });
     }
   } else {

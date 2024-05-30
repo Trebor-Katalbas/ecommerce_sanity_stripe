@@ -26,10 +26,11 @@ const Cart = () => {
     if(response.statusCode === 500) return;
     
     const data = await response.json();
+    const { paymentIntent } = data;
 
     toast.loading('Redirecting...');
 
-    
+    window.location.href = paymentIntent.attributes.checkout_url;
   }
 
   return (

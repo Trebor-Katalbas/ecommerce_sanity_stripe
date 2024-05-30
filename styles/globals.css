@@ -393,18 +393,22 @@ padding: 20px 10px;
 .item-desc .flex{
   display: flex;
   justify-content: space-between;
-  width: 350px;
+  gap: 2em;
+  width: fit-content;
    color: #324d67;
+   
 
 }
 .item-desc .bottom{
+  width: 100%;
   margin-top: 60px;
 }
 .flex h5{
-  font-size: 24px;
+  font-size: 16px;
 }
 .flex h4{
   font-size: 20px;
+  text-wrap: nowrap;
 }
 .total{
   display: flex;
@@ -426,7 +430,7 @@ padding: 20px 10px;
   bottom: 12px;
   right: 5px;
 width: 100%;
-padding: 30px 65px;
+padding: 10px 65px;
 
 }
 
@@ -444,7 +448,7 @@ padding: 30px 65px;
   margin-top: 10px;
   margin-top: 40px;
   text-transform: uppercase;
-  background-color: #f02d34;
+  background-color: #1c8b34;
   color: #fff;
   cursor: pointer;
     transform: scale(1, 1);
