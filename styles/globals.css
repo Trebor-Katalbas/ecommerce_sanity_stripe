@@ -147,7 +147,7 @@ width: 100%;
   font-size: 20px;
 }
 .hero-banner-container button{
-   border-radius: 15px;
+   border-radius: 6px;
   padding: 10px 16px;
   background-color: #2A5C86;
   color: white;
@@ -169,11 +169,16 @@ width: 100%;
   font-size: 4rem;
   margin-top: 4px;
 }
-.hero-banner-container h1{
-  color: #F2E320;
+.hero-banner-container h1 {
+  background: linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 5%, rgba(189,176,0,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
   font-size: 10em;
   text-transform: uppercase;
 }
+
 .hero-banner-image{
   position: absolute;
   top: 0%;
@@ -181,14 +186,8 @@ width: 100%;
   width: 450px;
   height: 450px;
   object-fit: contain;
-}
-.slide-in {
-  animation: slideIn linear;
-  animation-timeline: view(-100px -100px);
-}
-@keyframes slideIn {
-  from {transform: translateY(-100px) translateX(30px);}
-  to {transform: translateY(100px) translateX(-30px);}
+  will-change: transform;
+  transition: transform 0.4s ease-out;
 }
 .desc{
 position: absolute;
@@ -244,7 +243,7 @@ text-align: end;
   gap: 2em;
 }
 .banner-desc button{
-  border-radius: 15px;
+  border-radius: 6px;
   padding: 10px 16px;
   background-color: white;
   color: #9B2135;
@@ -275,10 +274,12 @@ text-align: end;
   height: 500px;
   /* top: -35%;
   left: 8%; */
-  top: -20%;
+  top: -60%;
   left: 30%;
   object-fit: contain;
   filter: brightness(65%);
+  will-change: transform;
+  transition: transform 0.4s ease-out;
 }
 .banner-desc .right{
   z-index: 99;
@@ -467,6 +468,7 @@ padding: 30px 65px;
 
   width: 400px;
   height: 400px;
+  object-fit: contain;
   cursor: pointer;
   transition: .3s ease-in-out;
 }

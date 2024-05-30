@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
-
 import { urlFor } from "../lib/client";
 
 const FooterBanner = ({
@@ -17,6 +16,22 @@ const FooterBanner = ({
     image,
   },
 }) => {
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (imageRef.current) {
+        const scrollPosition = window.scrollY;
+        imageRef.current.style.transform = `translateY(${scrollPosition * 0.1}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="footer-banner-container">
       <div className="banner-desc">
@@ -40,7 +55,7 @@ const FooterBanner = ({
           </div>
         </div>
 
-        <img src={urlFor(image)} className="footer-banner-image slide-in" />
+        <img ref={imageRef} src={urlFor(image)} className="footer-banner-image parallaxImage" />
       </div>
     </div>
   );

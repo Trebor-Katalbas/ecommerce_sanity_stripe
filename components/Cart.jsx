@@ -6,16 +6,16 @@ import toast from 'react-hot-toast';
 
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
-import getStripe from '../lib/getStripe';
+import getPaymongo from '../lib/getPaymongo';
 
 const Cart = () => {
   const cartRef = useRef();
   const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuanitity, onRemove } = useStateContext();
 
   const handleCheckout = async () => {
-    const stripe = await getStripe();
+    const stripe = await getPaymongo();
 
-    const response = await fetch('/api/stripe', {
+    const response = await fetch('/api/paymongo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ const Cart = () => {
 
     toast.loading('Redirecting...');
 
-    stripe.redirectToCheckout({ sessionId: data.id });
+    
   }
 
   return (
