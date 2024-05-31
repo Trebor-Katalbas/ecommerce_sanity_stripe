@@ -32,6 +32,24 @@ width: 100%;
   margin: 6px 18px;
   position: relative;
 }
+.page-title {
+  text-align: center;
+  color:#9B2135;
+  border-bottom: 1px solid #2A5C86;
+  padding: 0.5em 0;
+}
+.left-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2em;
+}
+.left-nav a {
+  font-weight: 500;
+}
+.left-nav a:hover {
+  border-bottom: 1px red solid;
+}
 .marquee-text{
   font-size: 29px;
   font-weight: 600;
@@ -390,14 +408,15 @@ padding: 20px 10px;
     border-radius: 15px;
  background-color: #ebebeb;
 }
+.item-desc {
+  width: 100%;
+}
 .item-desc .flex{
   display: flex;
   justify-content: space-between;
   gap: 2em;
   width: fit-content;
    color: #324d67;
-   
-
 }
 .item-desc .bottom{
   width: 100%;

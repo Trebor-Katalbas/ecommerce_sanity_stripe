@@ -49,7 +49,7 @@ const FooterBanner = ({
           </div>
 
           <div className="shop-btn">
-            <Link href={`/product/${product}`}>
+            <Link href={`/productpage`}>
               <button type="button">{buttonText}</button>
             </Link>
           </div>
