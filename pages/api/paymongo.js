@@ -21,43 +21,24 @@ export default async function handler(req, res) {
         };
       });
 
-      const referenceNumber = Math.floor(100000 + Math.random() * 900000).toString();
+      const totalAmount = items.reduce((sum, item) => sum + item.amount * item.quantity, 0);
 
-      // Create Checkout Session
+      const description = items
+        .map(item => `${item.quantity} x ${item.name} @ PHP ${item.amount / 100}`)
+        .join(" | ");
+
+      const referenceNumber = Math.floor(
+        100000 + Math.random() * 900000
+      ).toString();
+
       const checkoutSessionResponse = await axios.post(
-        "https://api.paymongo.com/v1/checkout_sessions",
+        "https://api.paymongo.com/v1/links",
         {
           data: {
             attributes: {
-              billing: {
-                address: {
-                  line1: 'string',
-                  line2: 'string',
-                  city: 'string',
-                  state: 'string',
-                  postal_code: 'string'
-                },
-                name: 'string',
-                email: 'string@example.com',
-                phone: 'string'
-              },
-              description: 'DKD Food Solutions (Products)',
-              line_items: items,
-              reference_number: referenceNumber,
-              payment_method_types: [
-                "gcash",
-                "paymaya",
-                "card",
-                "dob_ubp",
-                "brankas_bdo",
-                "brankas_landbank",
-                "brankas_metrobank",
-                "billease",
-              ],
-              send_email_receipt: true,
-              show_description: true,
-              show_line_items: true,
-              success_url: `${req.headers.origin}/success`,
+              amount: totalAmount,
+              description: description,
+              remarks: `Reference Number: ${referenceNumber}`,
             },
           },
         },
@@ -76,7 +57,7 @@ export default async function handler(req, res) {
       // Return the checkout session data
       res.status(200).json({ paymentIntent });
     } catch (err) {
-      console.error(err);
+      console.error("Error creating checkout session:", err.response?.data || err.message);
       res.status(err.response?.status || 500).json({ error: err.message });
     }
   } else {
