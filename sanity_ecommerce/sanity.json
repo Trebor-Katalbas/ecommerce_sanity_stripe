@@ -1,10 +1,10 @@
 {
   "root": true,
   "project": {
-    "name": "DKD-Marketing"
+    "name": "dkd-ecommerce"
   },
   "api": {
-    "projectId": "wukgfk58",
+    "projectId": "zoizhltn",
     "dataset": "production"
   },
   "plugins": [
